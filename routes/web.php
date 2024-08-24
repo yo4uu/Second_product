@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,18 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+//以下生徒登録
+Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
+Route::get('/student/importForm', [StudentController::class, 'showImportForm'])->name('student.importForm');
+Route::post('/student/import', [StudentController::class, 'import'])->name('student.import');
+Route::post('/student/store', [StudentController::class,'store'])->name('student.store');
+Route::get('student/{student}/edit', [StudentController::class,'edit'])->name('student.edit');
+Route::patch('/student/{student}/update', [StudentController::class, 'update'])->name('student.update');
+Route::delete('/student/{student}/destroy', [StudentController::class, 'destroy'])->name('student.destroy');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
