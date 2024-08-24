@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\YearlyUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,10 @@ Route::get('student/{student}/edit', [StudentController::class,'edit'])->name('s
 Route::patch('/student/{student}/update', [StudentController::class, 'update'])->name('student.update');
 Route::delete('/student/{student}/destroy', [StudentController::class, 'destroy'])->name('student.destroy');
 
-
+//以下学年・クラス設定(年度更新)
+Route::get('/yealyupdate', [YearlyUpdateController::class, 'index'])->name('yearly.index');
+Route::delete('/classes/{id}', [YearlyUpdateController::class, 'destroy'])->name('classes.destroy');
+Route::post('/classes', [YearlyUpdateController::class, 'store'])->name('classes.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -29,6 +29,13 @@
                                     </a>
                                 </div>
                             </div>
+                            <div class="col-6">
+                                <div class="p-3 border bg-white text-center rounded-md">
+                                    <a href="{{ route('yearly.index') }}" class="d-block text-decoration-none text-dark">
+                                        学年・クラス設定
+                                    </a>
+                                </div>
+                            </div>
                             {{-- <div class="col-6">
                                 <div class="p-3 border bg-white text-center rounded-md">
                                     <a href="{{ route('setclass.index') }}" class="d-block text-decoration-none text-dark">
