@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\YearlyUpdateController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [TaskController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+//以下タスク追加
+Route::post('/task', [TaskController::class, 'store'])->name('task.store');
+Route::delete('/task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
 
 //以下生徒登録
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');
