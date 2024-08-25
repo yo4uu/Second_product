@@ -5,13 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SchoolClass extends Model
+class Reservation extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'class_name',
-        'school_grade',
-        'school_year',
-    ];
+    protected $fillable = ['cell_id', 'name', 'class'];
 }

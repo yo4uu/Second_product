@@ -8,25 +8,21 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div class="container ">
-
-                        <div class="form-group">
-                            <label for="year_filter">年度フィルター:</label>
-                            <select id="year_filter" class="form-control">
+                    <div class="container">
+                        <div class="form-group text-right">
+                            <label for="year_filter">年度フィルター</label>
+                            <select id="year_filter" class="form-control w-24 ml-auto" >
                                 @for ($year = $currentYear - 3; $year <= $currentYear + 3; $year++)
                                     <option value="{{ $year }}" {{ $year == $currentYear ? 'selected' : '' }}>
                                         {{ $year }}
                                     </option>
                                 @endfor
                             </select>
-                            
                         </div>
-                
-
                         <div class="container mx-auto text-center">
-                            <div class="flex flex-wrap justify-start gap-4">
+                            <div class="flex flex-wrap justify-center gap-4 my-4">
                                 @foreach(range(1, 6) as $grade)
-                                    <div class="w-full md:w-1/2 lg:w-1/3 p-3">
+                                    <div class="w-full md:w-1/2 lg:w-1/3 p-3 border rounded ">
                                         <h5 class="text-xl font-bold mb-2">
                                             {{ $grade }}年生
                                             <!-- クラス追加ボタン -->
@@ -45,7 +41,6 @@
                                 @endforeach
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\YearlyUpdateController;
+use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,11 @@ Route::post('/student/store', [StudentController::class,'store'])->name('student
 Route::get('student/{student}/edit', [StudentController::class,'edit'])->name('student.edit');
 Route::patch('/student/{student}/update', [StudentController::class, 'update'])->name('student.update');
 Route::delete('/student/{student}/destroy', [StudentController::class, 'destroy'])->name('student.destroy');
+
+
+//以下設備予約
+Route::get('/facility/index',[FacilityController::class, 'index'])->name('facility.index');
+Route::post('/facility/reservation', [FacilityController::class, 'store'])->name('reservation.store');
 
 //以下学年・クラス設定(年度更新)
 Route::get('/yealyupdate', [YearlyUpdateController::class, 'index'])->name('yearly.index');
