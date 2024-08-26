@@ -14,4 +14,9 @@ class SchoolClass extends Model
         'school_grade',
         'school_year',
     ];
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'class_memberships');
+    }
 }

@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="p-3 border bg-white text-center rounded-md">
-                                    <a href="#" class="d-block text-decoration-none text-dark">
+                                    <a href="{{ route('setclass.index') }}" class="d-block text-decoration-none text-dark">
                                         クラス設定
                                     </a>
                                 </div>

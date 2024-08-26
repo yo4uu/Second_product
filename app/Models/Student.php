@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+
 
 class Student extends Model
 {
@@ -16,4 +18,9 @@ class Student extends Model
         'admission_year',
         'email',
     ];
+
+    public function schoolClasses()
+    {
+        return $this->belongsToMany(SchoolClass::class, 'class_memberships');
+    }
 }

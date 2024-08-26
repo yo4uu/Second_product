@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\YearlyUpdateController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\SetClassController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,11 @@ Route::get('student/{student}/edit', [StudentController::class,'edit'])->name('s
 Route::patch('/student/{student}/update', [StudentController::class, 'update'])->name('student.update');
 Route::delete('/student/{student}/destroy', [StudentController::class, 'destroy'])->name('student.destroy');
 
+//以下クラス登録
+Route::get('/setclass/index', [SetClassController::class, 'index'])->name('setclass.index');
+Route::post('/setclass/show', [SetClassController::class, 'filterByGrade'])->name('setclass.show');
+Route::get('/setclass/create/{grade}', [SetClassController::class, 'create'])->name('setclass.create');
+Route::post('/setclass/store', [SetClassController::class, 'store'])->name('setclass.store');
 
 //以下設備予約
 Route::get('/facility/index',[FacilityController::class, 'index'])->name('facility.index');
