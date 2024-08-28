@@ -5,21 +5,12 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    施設予約
-                </div>
-            </div>
-        </div>
-    </div>
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
                 <div class="btn-wrapper flex justify-between items-center">
-                    <button class="prev-btn border p-2" onclick="showPreviousWeek()">前の週</button>
+                    <button class="prev-btn border-2 border rounded p-2" onclick="showPreviousWeek()">←前の週</button>
                     <div id="weeks-container" class="flex-grow text-center">
                         @foreach($weeks as $weekIndex => $week)
                             <div class="week-group" id="week{{ $weekIndex }}" style="{{ $weekIndex !== 0 ? 'display:none;' : '' }}">
@@ -35,7 +26,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <button class="next-btn border p-2" onclick="showNextWeek()">次の週→</button>
+                    <button class="next-btn border border-2 rounded p-2" onclick="showNextWeek()">次の週→</button>
                 </div>
                 
                 <div id="tables-container" class="reservationTable flex justify-center mt-4">
@@ -73,8 +64,11 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    
                                 </table>
+                                <div class="" id="message">
+                                    ＊予約したい日時の施設を選択してください。
+                                    ＊上書きしたい場合は入力し直してください
+                                </div>
                             </div>
                         @endforeach
                     @endforeach

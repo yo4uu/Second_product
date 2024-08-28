@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\YearlyUpdateController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\SetClassController;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,5 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//以下成績処理
+Route::get('/grades/select', [GradeController::class, 'select'])->name('grades.select');
 
 require __DIR__.'/auth.php';
