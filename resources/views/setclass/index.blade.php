@@ -33,8 +33,6 @@
         </div>
     </div>
     
-@push('scripts')
-    @vite('resources/js/schoolGradeDropdown.js')
-@endpush
+
 </x-app-layout>
 
