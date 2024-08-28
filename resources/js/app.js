@@ -2,7 +2,7 @@ import './bootstrap';
 
 import Alpine from 'alpinejs';
 
-import './schoolGradeDropdown.js';
+import './changeDate.js';
 
 window.Alpine = Alpine;
 

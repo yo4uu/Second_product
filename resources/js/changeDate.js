@@ -1,7 +1,7 @@
 let currentWeekIndex = window.appData.currentWeekIndex;
 const totalWeeks = window.appData.totalWeeks;
 
-function showTable(date) {
+window.showTable = function(date) {
     // すべてのテーブルを非表示にする
     document.querySelectorAll('.table-responsive').forEach(table => {
         table.style.display = 'none';
@@ -9,44 +9,33 @@ function showTable(date) {
 
     // 対応するテーブルを表示する
     document.getElementById('table-' + date).style.display = 'block';
-}
+};
 
-function showPreviousWeek() {
+window.showPreviousWeek = function() {
     if (currentWeekIndex > 0) {
         document.getElementById(`week${currentWeekIndex}`).style.display = 'none';
         currentWeekIndex--;
         document.getElementById(`week${currentWeekIndex}`).style.display = 'block';
-        updateButtonVisibility();
+        window.updateButtonVisibility();
     }
-}
+};
 
-function showNextWeek() {
+window.showNextWeek = function() {
     if (currentWeekIndex < totalWeeks - 1) {
         document.getElementById(`week${currentWeekIndex}`).style.display = 'none';
         currentWeekIndex++;
         document.getElementById(`week${currentWeekIndex}`).style.display = 'block';
-        updateButtonVisibility();
+        window.updateButtonVisibility();
     }
-}
+};
 
-
-
-function updateButtonVisibility() {
+window.updateButtonVisibility = function() {
     document.querySelector('.prev-btn').classList.toggle('invisible', currentWeekIndex === 0);
     document.querySelector('.next-btn').classList.toggle('invisible', currentWeekIndex === totalWeeks - 1);
-}
+};
 
-// 初期表示で最初のテーブルを表示
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.table-responsive').style.display = 'block';
-});
-
-updateButtonVisibility();
-
-function ReservationModal(cellId) {
-    
+window.ReservationModal = function(cellId) {
     let parts = cellId.split('-');
-
     let year = parts[1];
     let month = parts[2];
     let day = parts[3];
@@ -58,11 +47,17 @@ function ReservationModal(cellId) {
     document.getElementById('modal').classList.remove('hidden');
     document.getElementById('modalTitle').textContent = selectedDate;
     document.getElementById('modalContent').textContent = period + 'の' + facility;
-
     document.getElementById('reservationCellId').value = cellId;
-}
+};
 
-function closeModal() {
+window.closeModal = function() {
     document.getElementById('modal').classList.add('hidden');
-    
-}
+};
+
+window.initializeTable = function() {
+    document.querySelector('.table-responsive').style.display = 'block';
+    window.updateButtonVisibility();
+};
+
+// 初期化
+document.addEventListener('DOMContentLoaded', window.initializeTable);
