@@ -31,6 +31,11 @@
                         施設予約
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('yearly.index')" :active="request()->routeIs('yearly.index')">
+                        年度更新
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
