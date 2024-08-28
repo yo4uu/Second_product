@@ -63,10 +63,9 @@ class FacilityController extends Controller
         // 予約済みのcell_idを全て取得
         $reservedCellIds = Reservation::pluck('cell_id')->toArray();
 
-        // 必要なデータと一緒にビューに渡す
+        $reservations = Reservation::pluck('class', 'cell_id')->toArray();
 
-
-        return view('facility.index',compact('weeks', 'periods', 'dayCount','facilities', 'reservedCellIds'));   
+        return view('facility.index',compact('weeks', 'periods', 'dayCount','facilities', 'reservedCellIds', 'reservations'));   
     }
 
     public function store(Request $request)

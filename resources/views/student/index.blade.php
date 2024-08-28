@@ -29,7 +29,7 @@
                                     <th class="py-2 px-4 border-b">生年月日</th>
                                     <th class="py-2 px-4 border-b">性別</th>
                                     <th class="py-2 px-4 border-b">住所</th>
-                                    <th class="py-2 px-4 border-b">クラス</th>
+                                    <th class="py-2 px-4 border-b">年組</th>
                                     <th class="py-2 px-4 border-b">入学年度</th>
                                     <th class="py-2 px-4 border-b bg-white sticky right-0">編集</th> 
                                 </tr>
@@ -42,10 +42,10 @@
                                     <td class="py-2 px-4 border-b">{{ $student->sex }}</td>
                                     <td class="py-2 px-4 border-b">{{ $student->adress }}</td>
                                     <td class="py-2 px-4 border-b">
-                                        {{-- @foreach ($student->schoolClasses as $class)
-                                        {{ $class->class }} 
-                                        @endforeach --}}
-                                        #
+                                        @foreach ($student->schoolClasses as $class)
+                                        {{ $class->school_grade }}年
+                                        {{ $class->class_name }} 
+                                        @endforeach
                                     </td>
                                     <td class="py-2 px-4 border-b">{{ $student->admission_year }}</td>
                                     <td class="py-2 px-4 border-b bg-white sticky right-0"> 

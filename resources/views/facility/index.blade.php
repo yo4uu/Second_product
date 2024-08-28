@@ -14,37 +14,6 @@
             </div>
         </div>
     </div>
-
-
-                    {{-- //s以下入力用モーダル --}}
-                    {{-- <div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden" style="z-index: 1000;">
-                        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-                            <h3 id="modalTitle" class="text-lg font-semibold"></h3>
-                            <p id="modalContent" class="mt-2"></p>
-                            <form id="reservationForm" action="{{ route('reservation.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="period" id="reservationPeriod">
-                                <input type="hidden" name="facility" id="reservationFacility">
-                                <div>
-                                    <label for="reservationName">名前</label><br>
-                                    <input type="text" id="reservationName" name="name" required class="w-full border rounded px-2 py-1">
-                                </div>
-                                <div class="mt-2">
-                                    <label for="reservationClass">クラス</label><br>
-                                    <input type="text" id="reservationClass" name="class"required class="w-full border rounded px-2 py-1">
-                                </div>
-                                <div class="mt-4 flex justify-between">
-                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                                        予約する
-                                    </button>
-                                    <button type="button" onclick="closeModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                        閉じる
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div> --}}
-
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -66,7 +35,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <button class="next-btn border p-2" onclick="showNextWeek()">次の週</button>
+                    <button class="next-btn border p-2" onclick="showNextWeek()">次の週→</button>
                 </div>
                 
                 <div id="tables-container" class="reservationTable flex justify-center mt-4">
@@ -74,7 +43,7 @@
                         @foreach($week as $day)
                             <!-- 各日付に対する表 -->
                             <div class="table-responsive" id="table-{{ $day['date'] }}" style="display: none;">
-                                <h3>{{ $day['date'] }} - {{ $day['dayOfWeek'] }}</h3>
+                                <h3>{{ $day['date'] }} - {{ $day['dayOfWeek'] }}曜日</h3>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
@@ -92,13 +61,14 @@
                                                     @php
                                                     $cellId = "cell-{$day['date']}-{$period}-{$facility}";
                                                     $isReserved = in_array($cellId, $reservedCellIds);
+                                                    $reservedClass = $reservations[$cellId] ?? ''; // 予約されたクラス名を取得
                                                     @endphp
                                                     <td id="{{ $cellId }}" 
-                                                    style="{{ $isReserved ? 'background-color: red; color: white;' : '' }}"
-                                                    class="cursor-pointer" 
-                                                    onclick="ReservationModal('{{ $cellId }}')">
-                                                    {{ $isReserved ? '予約済' : '' }}
-                                                </td>
+                                                        style="{{ $isReserved ? 'background-color: #FFABCE; color: black;' : '' }}"
+                                                        class="cursor-pointer text-center" 
+                                                        onclick="ReservationModal('{{ $cellId }}')">
+                                                        {{ $isReserved ? $reservedClass : '' }} <!-- クラス名を表示 -->
+                                                    </td>
                                                 @endforeach
                                             </tr>
                                         @endforeach
