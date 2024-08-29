@@ -26,28 +26,28 @@ class YearlyUpdateController extends Controller
     }
 
     public function destroy($id)
-{
-    $class = SchoolClass::findOrFail($id);
-    $class->delete();
+    {
+        $class = SchoolClass::findOrFail($id);
+        $class->delete();
 
-    return response()->json(['status' => 'success']);
-}
+        return response()->json(['status' => 'success']);
+    }
 
-public function store(Request $request)
-{
-    $maxClassNumber = SchoolClass::where('school_grade', $request->input('school_grade'))
-                                 ->where('school_year', $request->input('school_year'))
-                                 ->count();
+    public function store(Request $request)
+    {
+        $maxClassNumber = SchoolClass::where('school_grade', $request->input('school_grade'))
+                                    ->where('school_year', $request->input('school_year'))
+                                    ->count();
 
-    $newClassName = ($maxClassNumber + 1) . '組';
+        $newClassName = ($maxClassNumber + 1) . '組';
 
-    SchoolClass::create([
-        'school_year' => $request->input('school_year'),
-        'school_grade' => $request->input('school_grade'),
-        'class_name' => $newClassName,
-    ]);
+        SchoolClass::create([
+            'school_year' => $request->input('school_year'),
+            'school_grade' => $request->input('school_grade'),
+            'class_name' => $newClassName,
+        ]);
 
-    return response()->json(['status' => 'success']);
-}
+        return response()->json(['status' => 'success']);
+    }
 
 }

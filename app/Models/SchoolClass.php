@@ -19,4 +19,9 @@ class SchoolClass extends Model
     {
         return $this->belongsToMany(Student::class, 'class_memberships');
     }
+    
+    public function evaluationItem()
+    {
+        return $this->hasMany(EvaluationItem::class);
+    }
 }

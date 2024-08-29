@@ -61,7 +61,7 @@ Route::get('/facility/index',[FacilityController::class, 'index'])->name('facili
 Route::post('/facility/reservation', [FacilityController::class, 'store'])->name('reservation.store');
 
 //以下学年・クラス設定(年度更新)
-Route::get('/yealyupdate', [YearlyUpdateController::class, 'index'])->name('yearly.index');
+Route::get('/yealy/index', [YearlyUpdateController::class, 'index'])->name('yearly.index');
 Route::delete('/classes/{id}', [YearlyUpdateController::class, 'destroy'])->name('classes.destroy');
 Route::post('/classes', [YearlyUpdateController::class, 'store'])->name('classes.store');
 
@@ -72,6 +72,8 @@ Route::middleware('auth')->group(function () {
 });
 
 //以下成績処理
-Route::get('/grades/select', [GradeController::class, 'select'])->name('grades.select');
+Route::get('/grades/index', [GradeController::class, 'index'])->name('grades.index');
+Route::get('/grades/show', [GradeController::class, 'show'])->name('grades.show');
+Route::post('/grades/addEvaItem', [GradeController::class, 'addEvaItem'])->name('grades.addEvaItem');
 
 require __DIR__.'/auth.php';

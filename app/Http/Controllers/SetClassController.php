@@ -56,12 +56,6 @@ class SetClassController extends Controller
 
         $students = Student::where('admission_year', $admissionYear)->get();
 
-        // $schoolClasses = SchoolClass::where('school_year', $currentYear)
-        //                             ->where('school_grade', $grade)
-        //                             ->orderBy('class_name', 'asc')
-        //                             ->distinct('class_name',)
-        //                             ->pluck('class_name');
-
         // 1. class_nameのリストを取得
         $classNames = SchoolClass::where('school_year', $currentYear)
                          ->where('school_grade', $grade)

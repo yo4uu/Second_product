@@ -13,4 +13,7 @@ class ClassMembership extends Model
         'student_id',
         'class_id',
     ];
+
+
 }
+ 

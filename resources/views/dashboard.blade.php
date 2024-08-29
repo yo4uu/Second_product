@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-6" >
                                 <div class="p-3 border bg-white text-center rounded-md">
-                                    <a href="{{ route('grades.select') }}" class="d-block text-decoration-none text-dark">
+                                    <a href="{{ route('grades.index') }}" class="d-block text-decoration-none text-dark">
                                         補助簿入力
                                     </a>
                                 </div>
