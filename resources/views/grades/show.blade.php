@@ -5,48 +5,77 @@
         </h2>
     </x-slot>
 
+    <div id="toast" class="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg opacity-0 transition-opacity duration-500 z-50">
+        {{ session('success') }}
+    </div>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7l mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <button  onclick="openModal()"  class="cursor-pointer transition-all bg-gray-700 text-white px-6 py-2 rounded-lg border-green-400 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] hover:shadow-xl hover:shadow-green-300 shadow-green-300 active:shadow-none">
                     評価項目追加
                     </button>
+                    <!-- 教科フィルタ用のドロップダウンメニュー -->
+                        <label for="subjectFilter" class="block mb-2 text-sm font-medium text-gray-700">教科でフィルタ:</label>
+                        <select id="subjectFilter" class="mb-4 p-2 border border-gray-300 rounded">
+                            <option value="">すべて</option>
+                            @foreach ($subjects as $subject)
+                                <option value="{{ $subject }}">{{ $subject }}</option>
+                            @endforeach
+                        </select>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="relative overflow-x-auto max-w-full">
-                        <table class="w-full border-collapse border border-gray-400">
-                            <h2>{{ $grade }}年 {{ $class }}</h2>
-                            <thead>
-                                <tr>
-                                    <th class="py-2 px-4 border-b whitespace-nowrap">生徒名</th> <!-- 改行を防止 -->
-                                    <th class="py-2 px-4 border-b whitespace-nowrap">#</th>
-                                    <th class="py-2 px-4 border-b whitespace-nowrap">#</th>        
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($schoolClasses as $schoolClass)
-                                    @foreach ($schoolClass->students as $student)
-                                        <tr>
-                                            <td class="py-2 px-4 border-b whitespace-nowrap">{{ $student->name }}</td> <!-- 改行を防止 -->
-                                        </tr>
+                        <!-- フォームの開始 -->
+                        <form action="{{ route('grades.store') }}" method="POST">
+                            @csrf 
+    
+                            <table class="w-full border-collapse border border-gray-400">
+                                <h2>{{ $grade }}年 {{ $class }}</h2>
+                                <thead>
+                                    <tr>
+                                        <th class="py-2 px-4 border-b whitespace-nowrap">生徒名</th> 
+                                        @foreach($evaluationItems as $item)
+                                            <th data-subject="{{ $item->subject }}" class="py-2 px-4 border-b whitespace-nowrap">{{ $item->item_name }}<br>{{ $item->item_type }}</th>
+                                        @endforeach
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($schoolClasses as $schoolClass)
+                                        @foreach ($schoolClass->students as $student)
+                                            <tr>
+                                                <td class="py-2 px-4 border-b whitespace-nowrap">{{ $student->name }}</td>
+                                                @foreach($evaluationItems as $item)
+                                                <td class="py-2 px-4 border-b whitespace-nowrap" data-subject="{{ $item->subject }}">
+                                                    <select name="evaluations[{{ $student->id }}][{{ $item->id }}]" class="rounded border-gray-300 w-full">
+                                                        @for ($i = 0; $i <= 100; $i += 10)
+                                                            <option value="{{ $i }}" {{ $item->evaluations->where('student_id', $student->id)->first()?->score == $i ? 'selected' : '' }}>
+                                                                {{ $i }}
+                                                            </option>
+                                                        @endfor
+                                                    </select>
+                                                </td>                                                
+                                                @endforeach
+                                            </tr>
+                                        @endforeach
                                     @endforeach
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                            <button type="submit" class="mt-4 bg-green-500 text-white px-4 py-2 rounded">保存</button>
+                        </form> 
                     </div>
-                    
                 </div>
             </div>
         </div>
     </div>
+    
+
     {{-- 以下モーダル --}}
     <div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden" style="z-index: 1000;">
         <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
@@ -90,14 +119,11 @@
             </button>
         </div>
     </div> 
-<script>
-function openModal() {
-    document.getElementById('modal').classList.remove('hidden');
-}
-function closeModal() {
-    document.getElementById('modal').classList.add('hidden');
-    document.getElementById('addEvaItem').reset();
-}
-</script>
+    <script>
+    document.body.dataset.showToast = "{{ session('showToast') ? 'true' : 'false' }}";
+    </script>
+    @push('scripts')
+            @vite(['resources/js/evaluation.js'])
+    @endpush
 </x-app-layout>
 

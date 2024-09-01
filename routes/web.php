@@ -75,5 +75,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/grades/index', [GradeController::class, 'index'])->name('grades.index');
 Route::get('/grades/show', [GradeController::class, 'show'])->name('grades.show');
 Route::post('/grades/addEvaItem', [GradeController::class, 'addEvaItem'])->name('grades.addEvaItem');
+Route::post('/grades/store', [GradeController::class, 'store'])->name('grades.store');
+
 
 require __DIR__.'/auth.php';
