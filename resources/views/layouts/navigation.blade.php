@@ -22,8 +22,8 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('yearly.index')" :active="request()->routeIs('yearly.index')">
-                        年度更新
+                    <x-nav-link :href="route('setclass.index')" :active="request()->routeIs('setclass.index')">
+                        クラス登録
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

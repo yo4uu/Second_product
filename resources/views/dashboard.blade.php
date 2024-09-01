@@ -8,8 +8,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                <div class="p-6 text-gray-900 text-center">
+                    今日も1日頑張りましょう！
                 </div>
             </div>
         </div>
@@ -18,35 +18,35 @@
     <div class="container">
         <div class="row g-4">
             <!-- 左側のコンポーネント -->
-            <div class="col-md-6">
-                <div class="p-3 border bg-white rounded-md">
-                    <div class="container">
-                        <div class="row g-2">
-                            <div class="col-6">
+            <div class="col-md-6 ">
+                <div class="p-3 border bg-white rounded-md ">
+                    <div class="container ">
+                        <div class="row g-2 ">
+                            <div class="col-6 ">
                                 <div class="p-3 border bg-white text-center rounded-md">
-                                    <a href="{{ route('student.index') }}" class="d-block text-decoration-none text-dark">
+                                    <a href="{{ route('student.index') }}" class=" d-block text-decoration-none text-dark">
                                         生徒一覧
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-6" >
                                 <div class="p-3 border bg-white text-center rounded-md">
-                                    <a href="{{ route('yearly.index') }}" class="d-block text-decoration-none text-dark">
-                                        年度更新
+                                    <a href="{{ route('grades.index') }}" class="d-block text-decoration-none text-dark">
+                                        補助簿・成績入力
                                     </a>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-3 border bg-white text-center rounded-md">
                                     <a href="{{ route('setclass.index') }}" class="d-block text-decoration-none text-dark">
-                                        クラス設定
+                                        クラス登録
                                     </a>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="p-3 border bg-white text-center rounded-md">
                                     <a href="{{ route('facility.index') }}" class="d-block text-decoration-none text-dark">
-                                        設備予約
+                                        施設予約
                                     </a>
                                 </div>
                             </div>
@@ -57,15 +57,14 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-6" >
+                            <div class="col-6">
                                 <div class="p-3 border bg-white text-center rounded-md">
-                                    <a href="{{ route('grades.index') }}" class="d-block text-decoration-none text-dark">
-                                        補助簿入力
+                                    <a href="{{ route('yearly.index') }}" class="d-block text-decoration-none text-dark">
+                                        年度更新
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -82,7 +81,7 @@
                                     </h2>
                                 </div>
                                 <div class="basis-1/4 flex items-center">
-                                    <button id="addTask" class="border rounded-md m-0 p-2 w-full h-full" onclick="OpenModal()">追加</button>
+                                    <button id="addTask" class="border bg-green-300 rounded-md m-0 p-2 w-full h-full" onclick="OpenModal()">追加</button>
                                 </div>
                             </div>
                             <div class="container">

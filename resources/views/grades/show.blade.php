@@ -11,11 +11,10 @@
     <div class="py-12">
         <div class="max-w-7l mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="p-6 text-gray-900 ">
                     <button  onclick="openModal()"  class="cursor-pointer transition-all bg-gray-700 text-white px-6 py-2 rounded-lg border-green-400 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] hover:shadow-xl hover:shadow-green-300 shadow-green-300 active:shadow-none">
                     評価項目追加
                     </button>
-                    <!-- 教科フィルタ用のドロップダウンメニュー -->
                         <label for="subjectFilter" class="block mb-2 text-sm font-medium text-gray-700">教科でフィルタ:</label>
                         <select id="subjectFilter" class="mb-4 p-2 border border-gray-300 rounded">
                             <option value="">すべて</option>

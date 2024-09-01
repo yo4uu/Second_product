@@ -20,8 +20,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="relative overflow-x-auto"> 
-                        <a href="{{ route('student.create') }}">生徒登録</a>
-                        <a href="{{ route('student.importForm') }}">生徒登録（CSV）</a>
+                        <a href="{{ route('student.create') }}" class="text-blue-500">生徒登録</a>
+                        <a href="{{ route('student.importForm') }}" class="text-blue-500 ml-6">生徒登録（CSV）</a>
                         <table class="min-w-full border-collapse border border-gray-400">
                             <thead>
                                 <tr>

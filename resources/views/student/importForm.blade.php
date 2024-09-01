@@ -21,7 +21,7 @@
                                 <label for="csv_file">CSVファイルを選択:</label>
                                 <input type="file" name="csv_file" id="csv_file" class="form-control-file">
                             </div>
-                            <button type="submit" class="btn btn-primary border rounded bg-gray-100">アップロード</button>
+                            <button type="submit" class="btn btn-primary border rounded bg-gray-100 text-cyan-950">アップロード</button>
                         </form>
                     </div>
                 </div>
